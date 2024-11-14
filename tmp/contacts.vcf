@@ -1,0 +1,9 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Honza
+N:;Honza;;;
+TEL;TYPE=CELL:+420 732 903 772
+ADR;TYPE=HOME:;;60;Obecnice;;26101;Česká republika;Obecnice 60\nObecnice 26
+ 101\nČeská republika
+CATEGORIES:Rodina,myContacts,starred
+END:VCARD

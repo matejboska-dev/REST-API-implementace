@@ -1,0 +1,6 @@
+{
+    "require": {
+        "granam/czech-vocative": "^2.2",
+        "tamtamchik/namecase": "^3.0"
+    }
+}

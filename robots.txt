@@ -1,0 +1,25 @@
+User-agent: *
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+Disallow: https://moodle.studujkdychces.cz/ 
+Disallow: https://studovna.studujkdychces.cz/ 
+Disallow: https://studujkdychces.cz/compare/
+Disallow: https://studujkdychces.cz/cookies/
+Disallow: https://studujkdychces.cz/thank-you-for-purchase/
+Disallow: https://studujkdychces.cz/dekujeme-za-vas-nakup/
+Disallow: https://studujkdychces.cz/dekuji-za-email/
+Disallow: https://studujkdychces.cz/gdpr/
+Disallow: https://studujkdychces.cz/generate-link/
+Disallow: https://studujkdychces.cz/muj-ucet-woo/
+Disallow: https://studujkdychces.cz/nakupni-kosik/
+Disallow: https://studujkdychces.cz/pokladna/
+Disallow: https://studujkdychces.cz/thank-you-for-purchase-2/
+Disallow: https://studujkdychces.cz/vitame-vas-u-nas/
+Disallow: https://studujkdychces.cz/wishlist/
+Disallow: https://studujkdychces.cz/log-out/
+Disallow: https://studujkdychces.cz/muj-ucet/
+Disallow: https://dev.studujkdychces.cz/muj-ucet/
+Disallow: https://moodle.studujkdychces.cz/
+Disallow: https://studovna.studujkdychces.cz/
+
+Sitemap: https://studujkdychces.cz/sitemap.xml

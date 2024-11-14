@@ -1,0 +1,1745 @@
+.dataTables_length{
+    width: 80%;
+    justify-content: space-between !important;
+}
+
+
+/*hamburger*/                   /*Rozbalovací okno = Hamburger menu slouží k efektivitě a uložení obsahu který se na stránce vyskytuje. */
+.menuButton {
+    height: 50px;
+}
+
+.hamburgerButton {
+    position: absolute;
+
+    display: block;
+    right: 10px;
+    margin-bottom: 10px;
+}
+
+.hamburgerIcon {
+    position: absolute;
+    right: 10px;
+    width: 10px !important;
+    height: 10px !important;
+}
+
+#hamburgerIcon {
+    position: absolute;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+}
+
+#hamburgerIcon:hover {
+    cursor: pointer;
+}
+
+.hamburger {
+    margin-bottom: 10px !important;
+    width: 80% !important;
+}
+
+
+.btn {
+    background-color: #36a2eb !important;
+    color: white !important;
+    border-radius: 8px !important;
+    font-weight: bold !important;
+}
+
+.myframe, .myframe2 {
+    position: absolute;
+    display: block;
+    width: 50%;
+    height: 100vh;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+
+#closeIframe {
+    z-index: 100;
+    position: absolute;
+    float: right;
+    right: 0;
+    margin: 20px;
+    border: none;
+    padding: 10px;
+    background-color: red !important;
+    color: white;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+#closeIframe:hover {
+    cursor: pointer;
+    background-color: #D10000 !important;
+}
+
+iframe {
+    position: relative;
+    width: 100%;
+    height: 90%;
+    z-index: 10;
+}
+
+.overlay {
+    width: 40%;
+    border-left: 1px solid black;
+    padding-left: 5px;
+    display: table-cell;
+    text-align: right
+}
+
+.overlay button {
+    margin: 0px;
+    font-size: 30px;
+    width: 40px;
+    height: 40px;
+    padding: 0 10px;
+    background-color: #36a2eb;
+}
+
+tr td:first-child,
+tr th:first-child,
+tr td:nth-child(2),
+tr th:nth-child(2) {
+    left: 0;
+    z-index: 2;
+}
+
+
+
+#basic_wrapper .bn49,
+#basic_filter input,
+#delete-btn,
+#export-btn,
+#basic_wrapper select,
+#basic_wrapper option,
+#basic_wrapper label {
+    border: 0;
+    text-align: center;
+    padding: 8px;
+    margin: 0px;
+    font-size: 14px;
+    max-height: 50px;
+    color: #ffffff;
+    background-color: #36a2eb;
+    border-radius: 8px;
+    font-family: "proxima-nova-soft", sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    transition: box-shadow 200ms ease-out;
+
+    
+}
+
+#delete-btn {
+    background-color: red !important
+}
+
+
+
+.dataTables_wrapper {
+    display: table-cell !important;
+    clear: none !important;
+    margin: 10px;
+}
+
+#basic_wrapper a.bn49 {
+    padding: 15px 8px 0 8px;
+}
+
+#check-active {     /*slouží k editaci zaškrnutí řádku který má být editován.*/
+    margin: 3Px;
+    margin-top: 6Px;
+    border: 0;
+    max-height: 50px;
+    text-align: center;
+    display: inline-block;
+    padding: 14px;
+    margin: 7px;
+    color: #ffffff;
+    background-color: #36a2eb;
+    border-radius: 8px;
+    font-family: "proxima-nova-soft", sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    transition: box-shadow 200ms ease-out;
+
+}
+
+
+label>select,
+label>input {
+    padding: 0px;
+    margin: 0px;
+}
+
+
+.selected2 {
+
+
+    background-color: lightgray;
+}
+
+#basic_length,
+.table-filter {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    
+    /* align-items: center; */
+}
+
+#basic tr:hover {
+    cursor: pointer
+}
+
+td {
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dataTables_scrollHeadInner {
+    /* max-height: 50px; */
+}
+
+.hidec {
+    display: none !important;
+}
+
+.jconfirm.jconfirm-light .jconfirm-box {
+    width: 50%
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #888 !important;
+    text-align: left;
+    background-color: white !important;
+    padding: 10px !important;
+}
+
+*,
+*,
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.lead {
+    font-size: 1.25 rem;
+    font-weight: 300;
+    color: white;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+:root {
+    --blue: #007bff;
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --red: #FF7851;
+    --orange: #fd7e14;
+    --yellow: #FFCE67;
+    --green: #56CC9D;
+    --teal: #20c997;
+    --cyan: #6CC3D5;
+    --white: #fff;
+    --gray: #888;
+    --gray-dark: #343a40;
+    --primary: #78C2AD;
+    --secondary: #F3969A;
+    --success: #56CC9D;
+    --info: #6CC3D5;
+    --warning: #FFCE67;
+    --danger: #FF7851;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.dt-top,
+.dt-bottom {
+    padding: 8px 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    cursor: default;
+    /* background: #222222; */
+
+}
+
+.dt-dropdown {
+
+    color: white;
+}
+
+.dt-top .dt-selector,
+.dt-bottom .dt-selector {
+    padding: 6px;
+    background: #222222;
+    color: white;
+}
+
+select {
+    word-wrap: normal;
+    writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: -internal-light-dark (black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: auto;
+    box-sizing: border-box;
+    align-items: center;
+    white-space: pre;
+    -webkit-rtl-ordering: logical;
+    background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+    cursor: default;
+    margin: 0em;
+    border-width: 1px;
+    border-style: solid;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+    border-radius: 0px;
+}
+
+button,
+select {
+    text-transform: none;
+}
+
+input,
+button,
+select,
+optgroup,
+textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.dt-input {
+    padding: 6px 12px;
+    background: #222222;
+}
+
+::placeholder {
+    color: white;
+}
+
+button,
+input {
+    overflow: visible;
+}
+
+div {
+    display: block;
+}
+
+.dt-container {
+    position: relative;
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+    color: white;
+    background: #222222;
+    max-height: 700px;
+}
+
+.dt-container .dt-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    margin-left: -50%;
+    margin-top: -20%;
+    height: 40px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%);
+
+}
+
+.hidden {
+    display: none !important;
+    opacity: 0 !important;
+}
+
+.dt-table {
+    max-width: 100%;
+    width: 100%;
+    border-spacing: 0;
+}
+
+.table-bordered {
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #888;
+    border-collapse: collapse;
+    text-indent: initial;
+    display: table;
+    box-sizing: border-box;
+    border-spacing: 2px;
+    border-color: grey;
+}
+
+thead {
+    display: table-header-group;      /*rozdělení sekcí tato část se týká Headeru.*/
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+.dt-table {
+    max-width: 100%;
+    width: 100%;
+    border-spacing: 0;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+.dt-table th.dt-sorter {
+    position: relative;
+    cursor: pointer;
+    padding-right: 20px;
+    color: white;
+}
+
+.dt-sorter-company {
+    background: #222222;
+    color: white;
+}
+
+
+.dt-table>thead>tr>th,
+.dt-table>thead>tr>td {
+    vertical-align: bottom;
+    text-align: left;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.dt-table>tbody>tr>td,
+.dt-table>tbody>tr>th,
+.dt-table>tfoot>tr>td,
+.dt-table>tfoot>tr>th,
+.dt-table>thead>tr>td,
+.dt-table>thead>tr>th {
+    vertical-align: top;
+    padding: 8px 10px;
+    white-space: nowrap;
+    color: black
+}
+
+.table-bordered thead th,
+.table-bordered thead td {
+    border-bottom-width: 2px;
+}
+
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+}
+
+.container {
+    margin: 0 10px;
+}
+
+h1,
+.h1 {
+    font-size: 2.5rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    margin-bottom: 0.5rem;
+    font-family: "Montserrat", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 500;
+    line-height: 1.2;
+    color: white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+select:not(:-internal-list-box) {
+    overflow: visible !important;
+}
+
+option {
+    font-weight: normal;
+    display: block;
+    white-space: nowrap;
+    min-height: 1.2em;
+    padding: 0px 2px 1px;
+}
+
+input[type="text" i] {
+    padding: 1px 2px;
+}
+
+input {
+    writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: internal-light-dark(black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: auto;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    background-color: internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+    margin: 0em;
+    padding: 1px 2px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+}
+
+.dt-table th {
+    vertical-align: bottom;
+    text-align: left;
+}
+
+.table-boarded th,
+.table-boarded td {
+    border: 1 px solid rgba(0, 0, 0, 0.05);
+}
+
+.table th,
+.table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+    color: black
+}
+
+.dr-table {
+    max-width: 100%;
+    width: 100%;
+    border-spacing: 0;
+}
+
+td:nth-child(even) {
+    display: table-cell;
+    vertical-align: inherit;
+}
+
+.dt-top,
+.dt-bottom {
+    padding: 8px 10 px;
+    display: flex;
+    justify-content: space-between;
+}
+
+*,
+*,
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.dt-top .dt-info,
+.dt-bottom .dt-info {
+    margin: 7px 0;
+}
+
+.dt-pagination ul {
+    margin: 0;
+    padding-left: 0;
+}
+
+ol,
+ul,
+dl {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+
+}
+
+.dt-pagination ul li {
+    list-style: none;
+    float: left;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+.dt-pagination .pager a {
+    font-weight: bold;
+}
+
+.dt-pagination a,
+.dt-pagination span {
+    border: 1px solid transparent;
+    float: left;
+    margin-left: 2px;
+    padding: 6px 12px;
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+}
+
+a {
+    color: #78C2AD;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+div.tables {
+    width: 100px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+@media only screen and (max-width: 800px) {
+
+    tr td:first-child,
+    tr th:first-child {
+        position: static !important;
+    }
+
+    .myframe {
+        position: absolute;
+        display: block;
+        width: 90%;
+        height: 100vh;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    }
+
+
+    #closeIframe {
+        z-index: 100;
+        position: absolute;
+        float: right;
+        right: 0;
+    }
+
+    iframe {
+        position: relative;
+        width: 100%;
+        height: 90%;
+        z-index: 10;
+    }
+
+
+}
+
+.buttons a {
+    width: 100%;
+    /* set to 100% */
+    height: 100%;
+    /* set to 100% */
+    margin-bottom: 0.5em;
+    padding-top: .6em;
+    padding-bottom: .6em;
+    color: #fff;
+    background-color: #aaabbb;
+    border-radius: 5px;
+    border: solid #cccccc 1px;
+    box-shadow: 2px 2px 1px #888888;
+    clear: right;
+    float: right;
+}
+
+/* .bn49 {
+    border: 0;
+    max-height: 50px;
+    text-align: center;
+    display: inline-block;
+    padding: 13px;
+    margin: 7px;
+    color: #ffffff;
+    background-color: #36a2eb;
+    border-radius: 8px;
+    font-family: "proxima-nova-soft", sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    transition: box-shadow 200ms ease-out;
+} */
+
+* {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.insert-box {
+    background-color: #adadad;
+    margin: 0 auto;
+    width: 40%;
+}
+
+.container {
+    padding-left: 15px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.box-text {
+    color: white;
+    margin: 0;
+    font-weight: bold;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 20px;
+}
+
+.box-input {
+    width: 48%;
+}
+
+.box-input input[type=text],
+.box-input input[type=email],
+.box-input input[type=tel] {
+    font-size: 17px;
+    border: none;
+    background-color: transparent;
+    border-bottom: 4px solid white;
+    outline: none;
+    color: white;
+    width: 100%;
+}
+
+.box-input input::placeholder {
+    color: lightgray;
+    font-weight: bold;
+}
+
+.box-input input[type=date] {
+    color: white;
+}
+
+.box-input label {
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.box-input input[type=date] {
+    color: black;
+}
+
+.box-submit input {
+    font-size: 18px;
+    padding: 5px 10px;
+}
+
+.box-submit {
+    margin-top: 20px;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #888;
+    text-align: left;
+    background-color: #222222;
+}
+
+*,
+*,
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.lead {
+    font-size: 1.25 rem;
+    font-weight: 300;
+    color: white;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+:root {
+    --blue: #007bff;
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --red: #FF7851;
+    --orange: #fd7e14;
+    --yellow: #FFCE67;
+    --green: #56CC9D;
+    --teal: #20c997;
+    --cyan: #6CC3D5;
+    --white: #fff;
+    --gray: #888;
+    --gray-dark: #343a40;
+    --primary: #78C2AD;
+    --secondary: #F3969A;
+    --success: #56CC9D;
+    --info: #6CC3D5;
+    --warning: #FFCE67;
+    --danger: #FF7851;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.dt-top,
+.dt-bottom {
+    padding: 8px 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    cursor: default;
+    /* background: #222222; */
+
+}
+
+.dt-dropdown {
+
+    color: white;
+}
+
+.dt-top .dt-selector,
+.dt-bottom .dt-selector {
+    padding: 6px;
+    background: #222222;
+    color: white;
+}
+
+select {
+    word-wrap: normal;
+    writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: -internal-light-dark (black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: auto;
+    box-sizing: border-box;
+    align-items: center;
+    white-space: pre;
+    -webkit-rtl-ordering: logical;
+    background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+    cursor: default;
+    margin: 0em;
+    border-width: 1px;
+    border-style: solid;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+    border-radius: 0px;
+}
+
+button,
+select {
+    text-transform: none;
+}
+
+input,
+button,
+select,
+optgroup,
+textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.dt-input {
+    padding: 6px 12px;
+    background: #222222;
+}
+
+::placeholder {
+    color: white;
+}
+
+button,
+input {
+    overflow: visible;
+}
+
+div {
+    display: block;
+}
+
+.dt-container {
+    position: relative;
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+    color: white;
+    background: #222222;
+    max-height: 760px;
+}
+
+.dt-container .dt-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    margin-left: -50%;
+    margin-top: -20%;
+    height: 40px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%);
+
+}
+
+.hidden {
+    display: none !important;
+    opacity: 0 !important;
+}
+
+.dt-table {
+    max-width: 100%;
+    width: 100%;
+    border-spacing: 0;
+}
+
+.table-bordered {
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #888;
+    border-collapse: collapse;
+    text-indent: initial;
+    display: table;
+    box-sizing: border-box;
+    border-spacing: 2px;
+    border-color: grey;
+}
+
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+.dt-table {
+    max-width: 100%;
+    width: 100%;
+    border-spacing: 0;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+.dt-table th.dt-sorter {
+    position: relative;
+    cursor: pointer;
+    padding-right: 20px;
+    color: white;
+}
+
+.dt-sorter-company {
+    background: #222222;
+    color: white;
+}
+
+
+.dt-table>thead>tr>th,
+.dt-table>thead>tr>td {
+    vertical-align: bottom;
+    text-align: left;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.dt-table>tbody>tr>td,
+.dt-table>tbody>tr>th,
+.dt-table>tfoot>tr>td,
+.dt-table>tfoot>tr>th,
+.dt-table>thead>tr>td,
+.dt-table>thead>tr>th {
+    vertical-align: top;
+    padding: 8px 10px;
+    white-space: nowrap;
+}
+
+.table-bordered thead th,
+.table-bordered thead td {
+    border-bottom-width: 2px;
+}
+
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+
+}
+
+table.dataTable thead>tr>th.sorting,
+table.dataTable thead>tr>th.sorting_asc,
+table.dataTable thead>tr>th.sorting_desc,
+table.dataTable thead>tr>th.sorting_asc_disabled,
+table.dataTable thead>tr>th.sorting_desc_disabled,
+table.dataTable thead>tr>td.sorting,
+table.dataTable thead>tr>td.sorting_asc,
+table.dataTable thead>tr>td.sorting_desc,
+table.dataTable thead>tr>td.sorting_asc_disabled,
+table.dataTable thead>tr>td.sorting_desc_disabled {
+    background-color: white !important;
+    min-width: 50px !important;
+}
+
+.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>thead>tr>th,
+.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>thead>tr>td,
+.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>tbody>tr>th,
+.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>tbody>tr>td {
+    max-width: 150px !important;
+}
+
+.container {
+    margin: 150px 50px;
+
+}
+
+h1,
+.h1 {
+    font-size: 2.5rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    margin-bottom: 0.5rem;
+    font-family: "Montserrat", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 500;
+    line-height: 1.2;
+    color: white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+select:not(:-internal-list-box) {
+    overflow: visible !important;
+}
+
+option {
+    font-weight: normal;
+    display: block;
+    white-space: nowrap;
+    min-height: 1.2em;
+    padding: 0px 2px 1px;
+}
+
+input[type="text" i] {
+    padding: 1px 2px;
+}
+
+input {
+    writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: internal-light-dark(black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: auto;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    background-color: internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+    margin: 0em;
+    padding: 1px 2px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+}
+
+.dt-table th {
+    vertical-align: bottom;
+    text-align: left;
+}
+
+.table-boarded th,
+.table-boarded td {
+    border: 1 px solid rgba(0, 0, 0, 0.05);
+}
+
+.table th,
+.table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dr-table {
+    max-width: 100%;
+    width: 100%;
+    border-spacing: 0;
+}
+
+td:nth-child(even) {
+    display: table-cell;
+    vertical-align: inherit;
+}
+
+.dt-top,
+.dt-bottom {
+    padding: 8px 10 px;
+    display: flex;
+    justify-content: space-between;
+}
+
+*,
+*,
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.dt-top .dt-info,
+.dt-bottom .dt-info {
+    margin: 7px 0;
+}
+
+.dt-pagination ul {
+    margin: 0;
+    padding-left: 0;
+}
+
+ol,
+ul,
+dl {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+
+}
+
+.dt-pagination ul li {
+    list-style: none;
+    float: left;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+.dt-pagination .pager a {
+    font-weight: bold;
+}
+
+.dt-pagination a,
+.dt-pagination span {
+    border: 1px solid transparent;
+    float: left;
+    margin-left: 2px;
+    padding: 6px 12px;
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+}
+
+a {
+    color: #78C2AD;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+div.tables {
+    width: 100px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+tr td:first-child,
+tr th:first-child {
+    left: 0;
+    z-index: 2;
+    background-color: white;
+}
+
+.buttons a {
+    width: 100%;
+    /* set to 100% */
+    height: 100%;
+    /* set to 100% */
+    margin-bottom: 0.5em;
+    padding-top: .6em;
+    padding-bottom: .6em;
+    color: #fff;
+    background-color: #aaabbb;
+    border-radius: 5px;
+    border: solid #cccccc 1px;
+    box-shadow: 2px 2px 1px #888888;
+    clear: right;
+    float: right;
+}
+
+.bn49 {
+    border: 0;
+    text-align: center;
+    display: inline-block;
+    padding: 3px;
+    width: auto;
+    height: 50px;
+    margin: 4px;
+    color: #ffffff;
+    background-color: #36a2eb;
+    border-radius: 8px;
+    font-family: "proxima-nova-soft", sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    transition: box-shadow 200ms ease-out;
+}
+
+
+* {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.insert-box {
+    background-color: #adadad;
+    margin: 0 auto;
+    width: 40%;
+}
+
+.container {
+    padding-left: 15px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.box-text {
+    color: white;
+    margin: 0;
+    font-weight: bold;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 20px;
+}
+
+.box-input {
+    width: 48%;
+}
+
+.box-input input[type=text],
+.box-input input[type=email],
+.box-input input[type=tel] {
+    font-size: 17px;
+    border: none;
+    background-color: transparent;
+    border-bottom: 4px solid white;
+    outline: none;
+    color: white;
+    width: 100%;
+}
+
+.box-input input::placeholder {
+    color: lightgray;
+    font-weight: bold;
+}
+
+.box-input input[type=date] {
+    color: white;
+}
+
+.box-input label {
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.box-input input[type=date] {
+    color: black;
+}
+
+.box-submit input {
+    font-size: 18px;
+    padding: 5px 10px;
+}
+
+.box-submit {
+    margin-top: 20px;
+}
+
+select {
+    margin-top: 10px;
+    /* height: 200px; */
+    min-width: 150px;
+}
+
+.overlay .button,
+.overlay .message,
+.customSelect,
+.overlay .select,
+.overlay .textarea,
+.overlay .text-input,
+.overlay .option-input+label,
+.overlay .checkbox-input+label,
+.overlay .label {
+    padding: 0.75em 1em;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    line-height: normal;
+    border-radius: 0;
+    border: none;
+    background: none;
+    display: block;
+}
+
+.overlay .label {
+    font-weight: bold;
+    color: black;
+    padding-top: 0;
+    padding-left: 0;
+    letter-spacing: 0.025em;
+    font-size: 1.125em;
+    line-height: 1.25;
+    position: relative;
+    z-index: 100;
+}
+
+.required .overlay .label:after,
+.overlay .required .label:after {
+    content: " *";
+    color: #E8474C;
+    font-weight: normal;
+    font-size: 0.75em;
+    vertical-align: top;
+}
+
+.customSelect,
+.overlay .select,
+.overlay .textarea,
+.overlay .text-input,
+.overlay .option-input+label,
+.overlay .checkbox-input+label {
+    font: inherit;
+    line-height: normal;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: white;
+    color: black;
+    position: relative;
+    border: 1px solid #36a2eb;
+}
+
+.customSelect:placeholder,
+.overlay .select:placeholder,
+.overlay .textarea:placeholder,
+.overlay .text-input:placeholder,
+.overlay .option-input+label:placeholder,
+.overlay .checkbox-input+label:placeholder {
+    color: black;
+}
+
+.customSelect:-webkit-autofill,
+.overlay .select:-webkit-autofill,
+.overlay .textarea:-webkit-autofill,
+.overlay .text-input:-webkit-autofill,
+.overlay .option-input+label:-webkit-autofill,
+.overlay .checkbox-input+label:-webkit-autofill {
+    box-shadow: 0 0 0px 1000px #111111 inset;
+    -webkit-text-fill-color: white;
+    border-top-color: #111111;
+    border-left-color: #111111;
+    border-right-color: #111111;
+}
+
+.customSelect:not(:focus):not(:active).error,
+.overlay .select:not(:focus):not(:active).error,
+.overlay .textarea:not(:focus):not(:active).error,
+.overlay .text-input:not(:focus):not(:active).error,
+.overlay .option-input+label:not(:focus):not(:active).error,
+.overlay .checkbox-input+label:not(:focus):not(:active).error,
+.error .customSelect:not(:focus):not(:active),
+.error .overlay .select:not(:focus):not(:active),
+.overlay .error .select:not(:focus):not(:active),
+.error .overlay .textarea:not(:focus):not(:active),
+.overlay .error .textarea:not(:focus):not(:active),
+.error .overlay .text-input:not(:focus):not(:active),
+.overlay .error .text-input:not(:focus):not(:active),
+.error .overlay .option-input+label:not(:focus):not(:active),
+.overlay .error .option-input+label:not(:focus):not(:active),
+.error .overlay .checkbox-input+label:not(:focus):not(:active),
+.overlay .error .checkbox-input+label:not(:focus):not(:active) {
+    background-size: 8px 8px;
+    background-image: linear-gradient(135deg, rgba(232, 71, 76, 0.5), rgba(232, 71, 76, 0.5) 25%, transparent 25%, transparent 50%, rgba(232, 71, 76, 0.5) 50%, rgba(232, 71, 76, 0.5) 75%, transparent 75%, transparent);
+    background-repeat: repeat;
+}
+
+.form:not(.has-magic-focus) .customSelect.customSelectFocus,
+.form:not(.has-magic-focus) .customSelect:active,
+.form:not(.has-magic-focus) .select:active,
+.form:not(.has-magic-focus) .textarea:active,
+.form:not(.has-magic-focus) .text-input:active,
+.form:not(.has-magic-focus) .option-input+label:active,
+.form:not(.has-magic-focus) .checkbox-input+label:active,
+.form:not(.has-magic-focus) .customSelect:focus,
+.form:not(.has-magic-focus) .select:focus,
+.form:not(.has-magic-focus) .textarea:focus,
+.form:not(.has-magic-focus) .text-input:focus,
+.form:not(.has-magic-focus) .option-input+label:focus,
+.form:not(.has-magic-focus) .checkbox-input+label:focus {
+    background: #36a2eb2b;
+}
+
+.overlay .message {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 100;
+    font-size: 0.625em;
+    color: white;
+}
+
+.overlay .option-input,
+.overlay .checkbox-input {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.overlay .option-input+label,
+.overlay .checkbox-input+label {
+    display: inline-block;
+    width: auto;
+    color: #4E4E4E;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+
+.overlay .option-input:focus+label,
+.overlay .checkbox-input:focus+label,
+.overlay .option-input:active+label,
+.overlay .checkbox-input:active+label {
+    color: #4E4E4E;
+}
+
+.overlay .option-input:checked+label,
+.overlay .checkbox-input:checked+label {
+    color: white;
+}
+
+.overlay .button {
+    font: inherit;
+    line-height: normal;
+    cursor: pointer;
+    background-color: #36a2eb;
+    color: white;
+    font-weight: bold;
+    width: auto;
+    margin-left: auto;
+    font-weight: bold;
+    padding-left: 2em;
+    padding-right: 2em;
+    max-width: 200px;
+    text-align: center;
+}
+
+.overlay .button:hover,
+.overlay .button:focus,
+.overlay .button:active {
+    color: white;
+    border-color: white;
+}
+
+.overlay .button:active {
+    position: relative;
+    top: 1px;
+    left: 1px;
+}
+
+
+main {
+    height: auto;
+    text-align: left;
+    display: flex;
+    background: white;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.overlay .field {
+    width: 100%;
+    margin: 0 0 1.5em 0;
+}
+
+@media screen and (min-width: 40em) {
+    .overlay .field.half {
+        width: calc(50% - 1px);
+    }
+}
+
+.overlay .field.last {
+    margin-left: auto;
+}
+
+.overlay .textarea {
+    max-width: 100%;
+}
+
+.overlay .select {
+    text-indent: 0.01px;
+    text-overflow: "" !important;
+}
+
+.overlay .select::-ms-expand {
+    display: none;
+}
+
+.overlay .checkboxes,
+.overlay .options {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    overflow: hidden;
+}
+
+.overlay .checkbox,
+.overlay .option {
+    float: left;
+    margin: 1px;
+}
+
+.overlay .customSelect {
+    pointer-events: none;
+}
+
+.overlay .customSelect:after {
+    content: "";
+    pointer-events: none;
+    width: 0.5em;
+    height: 0.5em;
+    border-style: solid;
+    border-color: white;
+    border-width: 0 3px 3px 0;
+    position: absolute;
+    top: 50%;
+    margin-top: -0.625em;
+    right: 1em;
+    transform-origin: 0 0;
+    transform: rotate(45deg);
+}
+
+.overlay .customSelect.customSelectFocus:after {
+    border-color: white;
+}
+
+.magic-focus {
+    position: absolute;
+    z-index: 0;
+    width: 0;
+    pointer-events: none;
+    background: rgba(255, 255, 255, 0.15);
+    transition: top 0.2s, left 0.2s, width 0.2s;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    will-change: top, left, width;
+    transform-origin: 0 0;
+}
+
+.overlay .buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.overlay .button {
+    margin-left: 0 !important;
+}
+
+@media only screen and (max-width: 1500px){
+    .dataTables_length {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+}
+
+@media only screen and (max-width: 1400px){
+    .dataTables_length {
+        width: 70%;
+    }
+}
