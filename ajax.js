@@ -9,11 +9,26 @@ $.getJSON( url+"procedure.php?cmd=getFirm&id="+id, function( data ) {
     $("input[name="+key).val(val);
 
   });
-    
-
 });  
 }
-  
+
+let arr = [
+    {
+        id:15,
+        name: "pepasale",
+        email: "negr.gamil"
+    }]
+
+
+
+const container = document.getElementById("table")
+arr.forEach(x=>
+{
+    container.innerText += `<div id="{x.id}">${x.name}, ${x.email}</div>`
+})
+
+
+
 function getFirmRow(url,id) {  
   
 $.getJSON( url+"?cmd=getFirm&id="+id, function( data ) {

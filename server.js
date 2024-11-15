@@ -1,6 +1,7 @@
 ﻿const express = require("express");
 const app = express();
 const mysql = require("mysql");
+const result = require("mysql/lib/protocol/ResultSet");
 
 const conn = mysql.createConnection({
     host: "127.0.0.1",
@@ -9,56 +10,50 @@ const conn = mysql.createConnection({
     database: "crm",
 });
 
-// conn.connect(function (err) {
-//     if (err) {
-//         console.error('Error connecting to MySQL: ' + err.stack);
-//         return;
-//     }
-// });
+conn.connect(function (err) {
+    if (err) {
+        console.error('Error connecting to MySQL: ' + err.stack);
+        return;
+    }
+});
 
-const getAllQuery = "select active, name, surname, email, phone, \n" +
-    "(select name from subject where id = firms.subject_id) as subject,\n" +
-    "source, date_of_contact, date_of_meeting,cv, \n" +
-    "(select text from firm_notes where firm_id = firms.id and note_type_id = (select id from note_type where note_type.type = 'result')) as result,\n" +
-    "(select text from firm_notes where firm_id = firms.id and note_type_id = (select id from note_type where note_type.type = 'workshop')) as workshop,\n" +
-    "(select text from firm_notes where firm_id = firms.id and note_type_id = (select id from note_type where note_type.type = 'brigade')) as brigade,\n" +
-    "(select text from firm_notes where firm_id = firms.id and note_type_id = (select id from note_type where note_type.type = 'practice')) as practice\n" +
-    "from firms";
+
+
+
+
+firmQueryColumns = []
+
+conn.query("SHOW COLUMNS FROM firm",(err,results) =>
+{
+    firmQueryColumns = results.map(x=> x.Field);
+
+    console.log(firmQueryColumns);
+
+    getAllQuery = queryBuilder();
+
+
+    console.log(getAllQuery);
+})
 
 const columnQueryMap = {}
+columnQueryMap["subject_id"] = "(select name from subject where id = firm.subject_id) as subject";
 
-columnQueryMap["active"] = "active";
-columnQueryMap["name"] = "name";
-columnQueryMap["surname"] = "surname";
-columnQueryMap["email"] = "email";
-columnQueryMap["phone"] = "phone";
-columnQueryMap["subject"] = "(select name from subject where id = firms.subject_id) as subject";
-columnQueryMap["source"] = "source";
-columnQueryMap["date_of_contact"] = "date_of_contact";
-columnQueryMap["date_of_meeting"] = "date_of_meeting";
-columnQueryMap["result"] = "(select text from firm_notes where firm_id = firms.id and note_type_id = (select id from note_type where note_type.type = 'result')) as result";
-columnQueryMap["workshop"] = "(select text from firm_notes where firm_id = firms.id and note_type_id = (select id from note_type where note_type.type = 'workshop')) as workshop";
-columnQueryMap["brigade"] = "(select text from firm_notes where firm_id = firms.id and note_type_id = (select id from note_type where note_type.type = 'brigade')) as brigade";
-columnQueryMap["practice"] = "(select text from firm_notes where firm_id = firms.id and note_type_id = (select id from note_type where note_type.type = 'practice')) as practice";
+let getAllQuery = "";
 
+function queryBuilder(columnsToIgnore) {
 
+    let query = "select ";
+    for (x of firmQueryColumns) {
 
-
-function queryBuilder(columnsToIgnore)
-{
-    let i = 0;
-    let query ="select ";
-    for (x in columnQueryMap) {
-
-        query += columnQueryMap[x];
-        if (i !== Object.keys(columnQueryMap).length -1) {
-            query += ",";
+        if (columnsToIgnore && columnsToIgnore.includes(x) ) {
+            continue;
         }
-        query += "\n";
-        i++;
-    }
+        query += columnQueryMap[x] ?? x;
+        query += ",\n";
 
-    query += "from firms"
+    }
+    query = query.replace(/,\s*$/, "");
+    query += " from firm"
     return query;
 }
 
@@ -66,37 +61,24 @@ function queryBuilder(columnsToIgnore)
 
 
 
-console.log(queryBuilder());
-
-
-
-app.get("/firms/:id", (req, res) => {
+app.get("/npi/firms/:id", (req, res) => {
     conn.query(getAllQuery + " where id = ?", [req.params.id], (err, results) => {
-
 
         res.send(JSON.stringify(results[0]));
 
     })
 })
 
-app.get("/firms/hide-column", (req, res) => {
+app.get("/npi/firms-all/hide-columns", (req, res) => {
 
-    conn.query(getAllQuery, (err, results) => {
-        let csvData = "active,name,surname,email,phone,subject,source,date_of_contact,date_of_meeting,source,date_of_contact,date_of_meeting,cv,result,workshop,brigade,practice \r\n"
+    conn.query(queryBuilder(req.body.hide_columns), (err, results) => {
 
-        results.forEach((x) => {
-            csvData += [x.active, x.name, x.surname, x.email, x.phone, x.subject, x.source, x.date_of_contact, x.date_of_meeting, x.cv, x.result, x.workshop, x.brigade, x.practice].join(",") + "\r\n"
-        })
+        res.send(JSON.stringify(results));
 
-        res
-            .set({
-                "Content-Type": "text/csv",
-                "Content-Disposition": `attachment; filename="firms.csv"`,
-            }).send(csvData);
     })
 })
 
-app.post("/firms", (req, res) => {
+app.post("/npi/firms", (req, res) => {
 
     let values = [1, req.body.name, req.body.surname, req.body.email, req.body.phone, req.body.subject_id, req.body.source, req.body.date_of_contact, req.body.date_of_meeting, 1];
 
@@ -110,7 +92,7 @@ app.post("/firms", (req, res) => {
     })
 })
 
-app.get("/firms/:id/contact/:contact_type", (req, res) => {
+app.get("/npi/firms/:id/contact/:contact_type", (req, res) => {
     let contact_type = req.params.contact_type;
     if (contact_type === "phone" || contact_type === "email") {
         conn.query("select ? from firms where id = ?", [contact_type, req.params.id], (err, result) => {
@@ -122,20 +104,49 @@ app.get("/firms/:id/contact/:contact_type", (req, res) => {
     }
 })
 
-app.post("/firms/:id/contact", (req, res) => {
+app.put("/npi/firms/:id/contact/:contact_type", (req, res) => {
+    let contact_type = req.params.contact_type;
+    if (contact_type === "phone" || contact_type === "email") {
+        conn.query("update firms set ? = ? where id = ?", [contact_type, req.params.id], (err, result) => {
+            res.send(JSON.stringify(result));
 
+        });
+    } else {
+        res.status(406).json({msg: "Invalid contact type"})
+    }
 })
 
-app.post("/cards", (req, res) => {
+app.post("/npi/cards", (req, res) => {
 
+    let image = req.body.img;
+    let firm_id = req.body.firm_id;
+
+    conn.query("insert into cards(firm_id) values (?)",[firm_id], (err, result) =>
+    {
+        if(err)
+        {
+           res.status(500).json({msg: "failed to insert card, card is already stored"})
+        }
+
+        conn.query("select name from firm where id = ?", [firm_id], (err, result) => {
+            require("fs").writeFile(`/cards/${result[0]}.png`, image, 'base64', function (err) {
+                console.log(err);
+            });
+
+            res.status(200).json({msg: "card saved"})
+        })
+    })
 })
 
-app.get("/firms/export", (req, res) => {
+app.get("/npi/firms-all/export", (req, res) => {
+
+    console.log(getAllQuery);
     conn.query(getAllQuery, (err, results) => {
-        let csvData = "active,name,surname,email,phone,subject,source,date_of_contact,date_of_meeting,source,date_of_contact,date_of_meeting,cv,result,workshop,brigade,practice \r\n"
+        let csvData = firmQueryColumns.join(",");
 
-        results.forEach((x) => {
-            csvData += [x.active, x.name, x.surname, x.email, x.phone, x.subject, x.source, x.date_of_contact, x.date_of_meeting, x.cv, x.result, x.workshop, x.brigade, x.practice].join(",") + "\r\n"
+        results.forEach(x => {
+            console.log(x);
+            csvData += Object.values(x).join(",") + "\r\n"
         })
 
         res
@@ -146,10 +157,65 @@ app.get("/firms/export", (req, res) => {
     })
 })
 
-app.get("/events/:id", (req, res) => {
-    conn.query("select ")
+app.get("/npi/events/:id", (req, res) => {
+    conn.query("select  events.name  as event_name ,firm.name as firm_name, events.description as event_description, events.time_start, events.time_end from firms_in_event" +
+        "\n" +
+        " inner join firm on firm.id = firms_in_event.firm_id \n" +
+        " inner join events on events.id = firms_in_event.event_id\n" +
+        " group by  event_name, firm.name, event_description, events.time_start, events.time_end;", (err, results) => {
+
+        let events = [];
+        for (event_name of [...new Set(results.map(a => a.event_name))]) {
+            // drinks.push({username: username, drinkData: []})
+
+            console.log(event_name);
+            events[event_name] = {firm_names: ""}
+            //console.log(username)
+            //responseData.terminal.drinks[username] = []
+        }
+
+        for (data of results) {
+            // responseData.terminal.drinks[data.username].push({drinkName: data.drink_name, amount: data.amount})
+            let name = data.event_name;
+            events[name].event_name ??= name;
+            events[data.event_name].firm_names +=  data.firm_name;
+            events[name].event_description ??= data.event_description;
+            events[name].time_start ??= data.time_start;
+            events[name].time_end ??= data.time_end
+
+
+            console.log(events[name]);
+        }
+
+        res.json(events);
+    })
 })
 
-app.post("/events/", (req, res) => {
+app.post("/npi/events/", (req, res) => {
+    {
+        let firm_ids = req.body.firm_ids;
 
+        conn.query("insert into events(name,description, time_start, time_end) values (?,?,?,?)",
+            [req.body.name, req.body.description, req.body.time_start, req.body.time_end], (err, results) => {
+                let id = results.insertId;
+
+                let query = "insert into firms_in_events(firm_id, event_id) values ";
+
+                for (firm_id of firm_ids) {
+                    query += (`(${firm_id}, ${id}),`)
+                }
+                query = query.replace(/,\s*$/, "");
+
+                conn.query(query, (err, results) => {
+                })
+
+            })
+    }
 })
+const PORT = 9009;
+app.listen(PORT, "0.0.0.0", function (err) {
+    if (err) console.log("Error in server setup")
+
+    console.log("Server listening on Port", PORT);
+
+});
