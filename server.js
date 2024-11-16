@@ -3,6 +3,9 @@ const app = express();
 const mysql = require("mysql");
 const result = require("mysql/lib/protocol/ResultSet");
 
+app.use(express.json())
+app.use(express.urlencoded({extended: false}));
+
 const conn = mysql.createConnection({
     host: "127.0.0.1",
     user: "root",
@@ -32,7 +35,7 @@ conn.query("SHOW COLUMNS FROM firm",(err,results) =>
     getAllQuery = queryBuilder();
 
 
-    console.log(getAllQuery);
+    //console.log(getAllQuery);
 })
 
 const columnQueryMap = {}
@@ -141,7 +144,7 @@ app.post("/npi/cards", (req, res) => {
 app.get("/npi/firms-all/export", (req, res) => {
 
     console.log(getAllQuery);
-    conn.query(getAllQuery, (err, results) => {
+    conn.query(queryBuilder(["id"]), (err, results) => {
         let csvData = firmQueryColumns.join(",");
 
         results.forEach(x => {
@@ -164,12 +167,17 @@ app.get("/npi/events/:id", (req, res) => {
         " inner join events on events.id = firms_in_event.event_id\n" +
         " group by  event_name, firm.name, event_description, events.time_start, events.time_end;", (err, results) => {
 
-        let events = [];
+        let events = {};
         for (event_name of [...new Set(results.map(a => a.event_name))]) {
             // drinks.push({username: username, drinkData: []})
 
-            console.log(event_name);
-            events[event_name] = {firm_names: ""}
+          //  console.log(event_name);
+            events[event_name] = {event_name: event_name, firm_names: ""}
+
+
+            console.log(events[event_name]);
+
+
             //console.log(username)
             //responseData.terminal.drinks[username] = []
         }
@@ -177,17 +185,26 @@ app.get("/npi/events/:id", (req, res) => {
         for (data of results) {
             // responseData.terminal.drinks[data.username].push({drinkName: data.drink_name, amount: data.amount})
             let name = data.event_name;
-            events[name].event_name ??= name;
-            events[data.event_name].firm_names +=  data.firm_name;
+
+            events[name].firm_names +=  data.firm_name;
             events[name].event_description ??= data.event_description;
             events[name].time_start ??= data.time_start;
             events[name].time_end ??= data.time_end
 
 
-            console.log(events[name]);
+           // console.log(events[name]);
         }
 
-        res.json(events);
+
+        let eventResults = [];
+        for(x in events)
+        {
+            eventResults.push(events[x]);
+        }
+
+
+       // console.log(JSON.stringify(eventResults));
+        res.json(eventResults);
     })
 })
 
