@@ -254,24 +254,24 @@ include_once("../session.php");
   <style>.mM{display:block;border-radius:50%;box-shadow:0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);position:fixed;bottom:1em;right:1em;-webkit-transform-origin:50% 50%;transform-origin:50% 50%;-webkit-transition:all 240ms ease-in-out;transition:all 240ms ease-in-out;z-index:9999;opacity:0.75}.mM svg{display:block}.mM:hover{opacity:1;-webkit-transform:scale(1.125);transform:scale(1.125)}</style></head>
   
   <body>
-    <form action="addEvent.php" method="POST" class="form">
+    <form action="addEvent.php" method="POST" class="form" id="event-form">
         
         <label class="label required" for="">Přidání Události</label>
         <p class="field required"></p>
     <p class="field required ">
         
       <label class="label required" for="name">Název</label>
-      <input class="text-input" name="name" required="" type="text" value="">
+      <input class="text-input" name="name" id="event-name" required="" type="text" value="">
     </p>
     
     <p class="field">
         <label class="label" for="description">Popis</label>
-        <textarea class="textarea" cols="50" name="description" rows="4"></textarea>
+        <textarea class="textarea" cols="50" name="description" id="event-description" rows="4"></textarea>
       </p>
 
       <div class="field half">
         <label class="label">Začátek Události</label>
-        <input class="text-input" name="time_start" type="datetime-local">
+        <input class="text-input" name="time_start" type="datetime-local" id="event-time-start">
       </div>
 
       <div class="field half">
@@ -304,7 +304,7 @@ include_once("../session.php");
   </p>
   <p class="field half">
   <label class="label" for="password">Firmy v události</label>
-    <select class="firms-in-event firmy-s" multiple>
+    <select class="firms-in-event firmy-s" id="event-firms" multiple>
     </select>
   </p>
     <p class="field half">
@@ -325,7 +325,36 @@ include_once("../session.php");
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.customSelect/0.5.1/jquery.customSelect.min.js"></script>
     <script src="https://cdpn.io/cpe/boomboom/pen.js?key=pen.js-b03f86d6-2f3e-cc9b-ec5e-0c681121e029" crossorigin=""></script><a href="https://codepen.io/mican/" target="_blank" class="mM"><svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><title>codepen-logo</title><path d="M16 32C7.163 32 0 24.837 0 16S7.163 0 16 0s16 7.163 16 16-7.163 16-16 16zM7.139 21.651l1.35-1.35a.387.387 0 0 0 0-.54l-3.49-3.49a.387.387 0 0 0-.54 0l-1.35 1.35a.39.39 0 0 0 0 .54l3.49 3.49a.38.38 0 0 0 .54 0zm6.922.153l2.544-2.543a.722.722 0 0 0 0-1.018l-6.582-6.58a.722.722 0 0 0-1.018 0l-2.543 2.544a.719.719 0 0 0 0 1.018l6.58 6.579c.281.28.737.28 1.019 0zm14.779-5.85l-7.786-7.79a.554.554 0 0 0-.788 0l-5.235 5.23a.558.558 0 0 0 0 .789l7.79 7.789c.216.216.568.216.785 0l5.236-5.236a.566.566 0 0 0 0-.786l-.002.003zm-3.89 2.806a.813.813 0 1 1 0-1.626.813.813 0 0 1 0 1.626z" fill="#FFF" fill-rule="evenodd"></path></svg></a>
-  
+
+
+  <script>
+
+      const form = document.getElementById('event-form');
+
+
+      form.onsubmit = (e) => {
+
+          e.preventDefault();
+
+          xhttp = new XMLHttpRequest();
+
+
+          const name = document.getElementById('event-name').value;
+          const description = document.getElementById('event-description').value;
+          const time_start = document.getElementById('event-time-start').value;
+
+          let firm_ids = [];
+          for (const child of document.getElementById('event-firms')) {
+              firm_ids.push(child.value);
+          }
+
+          xhttp.open("POST", "http://s-jonas-24.dev.spsejecna.net/npi/events/", true);
+          xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+          xhttp.send(JSON.stringify({name: name, description: description, time_start: time_start, firm_ids: firm_ids}));
+      }
+
+
+      </script>
   
   </body></html>
   

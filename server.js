@@ -2,9 +2,19 @@
 const app = express();
 const mysql = require("mysql");
 const result = require("mysql/lib/protocol/ResultSet");
-
+const cors = require('cors');
 app.use(express.json())
 app.use(express.urlencoded({extended: false}));
+
+const corsOptions = {
+    origin: '*', // Allow only requests from this origin
+    methods: 'GET,POST', // Allow only these methods
+    allowedHeaders: ['Content-Type', 'Authorization'] // Allow only these headers
+};
+
+// Use CORS middleware with specified options
+app.use(cors(corsOptions));
+
 
 const conn = mysql.createConnection({
     host: "127.0.0.1",
@@ -85,6 +95,13 @@ app.get("/npi/firms-all/hide-columns", (req, res) => {
 })
 
 app.post("/npi/firms", (req, res) => {
+
+
+    firmQueryColumns.forEach(x=>
+    {
+
+
+    })
 
     let values = [1, req.body.name, req.body.surname, req.body.email, req.body.phone, req.body.subject_id, req.body.source, req.body.date_of_contact, req.body.date_of_meeting, 1];
 
@@ -240,11 +257,11 @@ app.post("/npi/events/", (req, res) => {
     {
         let firm_ids = req.body.firm_ids;
 
-        conn.query("insert into events(name,description, time_start, time_end) values (?,?,?,?)",
-            [req.body.name, req.body.description, req.body.time_start, req.body.time_end], (err, results) => {
+        conn.query("insert into events(name,description, time_start, time_end) values (?,?,?,null)",
+            [req.body.name, req.body.description, req.body.time_start], (err, results) => {
                 let id = results.insertId;
 
-                let query = "insert into firms_in_events(firm_id, event_id) values ";
+                let query = "insert into firms_in_event(firm_id, event_id) values ";
 
                 for (firm_id of firm_ids) {
                     query += (`(${firm_id}, ${id}),`)
@@ -252,6 +269,8 @@ app.post("/npi/events/", (req, res) => {
                 query = query.replace(/,\s*$/, "");
 
                 conn.query(query, (err, results) => {
+                    console.log(err);
+
                 })
 
             })
