@@ -74,6 +74,9 @@ app.get("/npi/firms/:id", (req, res) => {
 
 app.get("/npi/firms-all/hide-columns", (req, res) => {
 
+   // res.send(JSON.stringify(req.body.hide_columns));
+
+
     conn.query(queryBuilder(req.body.hide_columns), (err, results) => {
 
         res.send(JSON.stringify(results));
@@ -110,14 +113,39 @@ app.get("/npi/firms/:id/contact/:contact_type", (req, res) => {
 app.put("/npi/firms/:id/contact/:contact_type", (req, res) => {
     let contact_type = req.params.contact_type;
     if (contact_type === "phone" || contact_type === "email") {
-        conn.query("update firms set ? = ? where id = ?", [contact_type, req.params.id], (err, result) => {
-            res.send(JSON.stringify(result));
+        conn.query("update firms set ? = ? where id = ?", [contact_type,req.body.new_value, req.params.id], (err, result) => {
+            if(err)
+            {
+                res.status(402).json({msg: "failed to update contact"});
+            } else
+            {
+                res.status(201).send();
+            }
 
         });
     } else {
         res.status(406).json({msg: "Invalid contact type"})
     }
 })
+
+app.delete("/npi/firms/:id/contact/:contact_type", (req, res) =>
+{
+    let contact_type = req.params.contact_type;
+    if (contact_type === "phone" || contact_type === "email") {
+        conn.query("update firms set ? = null where id = ?", [contact_type, req.params.id], (err, result) => {
+            if(err)
+            {
+                res.status(402).json({msg: "failed to update contact"});
+            } else
+            {
+                res.status(201).send();
+            }
+        });
+    } else {
+        res.status(406).json({msg: "Invalid contact type"})
+    }
+})
+
 
 app.post("/npi/cards", (req, res) => {
 
@@ -229,6 +257,8 @@ app.post("/npi/events/", (req, res) => {
             })
     }
 })
+
+
 const PORT = 9009;
 app.listen(PORT, "0.0.0.0", function (err) {
     if (err) console.log("Error in server setup")
